@@ -1,0 +1,83 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Interfejsy Platform Mobilnych</title>
+
+        <style>
+            input{
+                margin:10px;
+            }
+            input:invalid {
+                border-color:red;
+            }
+            input:valid{
+                border-color:green;
+            }
+        </style>
+
+        <script type="text/javascript">
+            function fill_with_random_data() {
+                document.getElementById('email').value="test@edu.p.lodz.pl";
+                document.getElementById('postal_code').value="90-149";
+                document.getElementById('nip').value="111-222-33-44";
+                document.getElementById('id_card_nr').value="ABC100000";
+                document.getElementById('ipv4').value="198.186.1.11";
+                document.getElementById('url_address').value="https://weeia.p.lodz.pl";
+                document.getElementById('drive_path').value="C:\\windows\\system32";
+                document.getElementById('drive_path_case').value="C:\\WinDOWS\\System32";
+                document.getElementById('drive_path_linux').value="/etc/passwd";
+                document.getElementById('ipv6').value="2001:0db8:85a3:0000:0000:8a2e:0370:7334";
+                document.getElementById('phone').value="666-213-711";
+            }
+        </script>
+    </head>
+    <body>
+        <label>Email:</label>
+        <input id="email" type="email" name="email" placeholder="xxx@gmail.com" required>
+        <br>
+
+        <label>Kod pocztowy:</label>
+        <input id="postal_code" type="text" name="postal_code" placeholder="22-640" pattern="[0-9]{2}-[0-9]{3}" required>
+        <br>
+
+        <label>NIP:</label>
+        <input id="nip" type="text" name="nip" placeholder="000-000-00-00" pattern="[0-9]{3}-[0-9]{3}-[0-9]{2}-[0-9]{2}" required>
+        <br>
+
+        <label>Numer dowodu:</label>
+        <input id="id_card_nr" type="text" name="id_card_nr" placeholder="XYZ123456" pattern="[A-Z]{3}[0-9]{6}" required>
+        <br>
+
+        <label>IPv4:</label>
+        <input id="ipv4" type="text" name="ipv4" placeholder="192.168.1.1" pattern="^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$" required>
+        <br>
+
+        <label>Adres URL:</label>
+        <input id="url_address" type="url" name="url_address" placeholder="https://www.weeia.edu.p.lodz.pl" required pattern="^(https?://|www\.)?([A-Za-z0-9]+\.)+([A-Za-z0-9]+)([/]\w)*$">
+        <br>
+
+        <label>Ścieżka nad dysku:</label>
+        <input id="drive_path" type="text" pattern="([a-zA-Z]:\\windows|winnt|win|dos|msdos)(\\[0-9a-z]+)?" placeholder="C:\windows\temp" required>
+        <br>
+
+        <label>Ścieżka na dysku (lower&upper case):</label>
+        <input id="drive_path_case" type="text" pattern="^[A-Z]:\\([Ww][Ii][Nn][Dd][Oo][Ww][Ss]|[Ww][Ii][Nn][Nn][Tt]|[Ww][Ii][Nn]|[Bb][Dd][Oo][Ss]|[Mm][Ss][Dd][Oo][Ss])(\\[0-9a-zA-Z]+)?" placeholder="C:\windows\Temp" required>
+        <br>
+
+        <label>Ścieżka na dysku (etc):</label>
+        <input id="drive_path_linux" type="text" name="drive_path_linux" placeholder="/etc/passwd" pattern="^\/etc\/[A-Za-z]+$" required>
+        <br>
+    
+        <label>IPv6:</label>
+        <input id="ipv6" type="text" name="ipv6" placeholder="2001:db8::1428:57ab" pattern="^([a-fA-F0-9:]+:+)[a-fA-F0-9]+$" required>
+        <br>
+
+        <label>Telefon:</label>
+        <input id="phone" type="tel" name="phone" placeholder="601-230-100" pattern="[0-9]{3}-[0-9]{3}-[0-9]{3}" required>
+        <br>
+
+        <label>Losowe dane:</label>
+        <button id="random_btn" type="button" onClick=fill_with_random_data()>Wypełnij</button>
+        <br>
+    </body>
+</html>
