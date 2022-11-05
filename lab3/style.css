@@ -3,3 +3,25 @@ body {
     grid-template-columns: 30% 70%;
     overflow: hidden;
 }
+
+.draggable-list-container {
+    display: flex;
+    background-color: khaki;
+}
+
+.tetris-container {
+    display: grid;
+    grid-template-rows: 80% 20%;
+}
+
+.tetris-container-platform {
+    display: grid;
+    flex-direction: column;
+    background-color: yellowgreen;
+}
+
+.tetris-container-button_field {
+    display: grid;
+    flex-direction: column;
+    background-color: tomato;
+}
