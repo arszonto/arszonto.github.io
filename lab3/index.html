@@ -15,15 +15,17 @@
                 <li class="draggable-li" draggable="true" >Horse</li>
             </ol>
         </div>
-        <div class="tetris-container">
+        <div class="tetris-container">  
             <div class="tetris-container-platform">
-                Platform
+                <canvas id="platform-canvas"></canvas>
             </div>
             <div class="tetris-container-button_field">
-                Button
+                <button onclick="generateRectangleInButtonArea()">Generuj klocek</button>
             </div>
         </div>
 
+        <script src="utils.js"></script>
         <script src="draggable_list.js"></script>
+        <script src="tetris_game.js"></script>
     </body>
 </html>

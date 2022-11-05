@@ -1,6 +1,6 @@
 body {
     display: grid;
-    grid-template-columns: 30% 70%;
+    grid-template-columns: 20% 80%;
     overflow: hidden;
 }
 
@@ -11,17 +11,14 @@ body {
 
 .tetris-container {
     display: grid;
-    grid-template-rows: 80% 20%;
+    grid-template-rows: 70% 30%;
 }
 
 .tetris-container-platform {
     display: grid;
-    flex-direction: column;
-    background-color: yellowgreen;
+    background-color: black;
 }
 
 .tetris-container-button_field {
     display: grid;
-    flex-direction: column;
-    background-color: tomato;
 }
