@@ -54,6 +54,7 @@ function loadTable() {
                 '<td class="postal_code">' + cursor.value.postal_code + '</td>' +
                 '<td class="phone">' + cursor.value.phone + '</td>' +
                 '<td class="nip">' + cursor.value.nip + '</td>' +
+                '<td class="remove_client>' + '<button id="remove_button" onclick="deleteClient(' + cursor.key +')">Usun</button>' + '</td>' +
                 '</tr>');
             cursor.continue();
         } 
@@ -96,6 +97,18 @@ function addClient()
         alert("Wystapil blad przy dodawaniu klienta do bazy.");
     }
 }
+
+function deleteClient(clientID) {
+    var request = db.transaction(["client"], "readwrite")
+        .objectStore("client")
+        .delete(clientID);
+
+    request.onsuccess = function (event) {
+        loadTable();
+        clearButtons();
+        alert("Usunieto wpis z bazy danych.");
+    };
+};
 
 function clearButtons() {
     $('#name').val("");
