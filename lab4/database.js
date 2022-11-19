@@ -73,6 +73,13 @@ function addClient()
     var postal_code = $('#postal_code').val();
     var phone = $('#phone').val();
     var nip = $('#nip').val();
+
+    if (!name || !surname || !email || !postal_code || !phone || !nip)
+    {
+        alert("Nalezy wypelnic wszystkie pola!");
+        return;
+    }
+
     var request = db.transaction(["client"], "readwrite")
         .objectStore("client")
         .add({
