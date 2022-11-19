@@ -54,7 +54,7 @@ function loadTable() {
                 '<td class="postal_code">' + cursor.value.postal_code + '</td>' +
                 '<td class="phone">' + cursor.value.phone + '</td>' +
                 '<td class="nip">' + cursor.value.nip + '</td>' +
-                '<td class="remove_client>' + '<button id="remove_button" onclick="deleteClient(' + cursor.key +')">Usun</button>' + '</td>' +
+                '<td class="remove_client>' + '<button class="table-button" id="remove_button" onclick="deleteClient(' + cursor.key +')">Usun</button>' + '</td>' +
                 '</tr>');
             cursor.continue();
         } 
