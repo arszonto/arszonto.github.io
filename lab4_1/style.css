@@ -13,15 +13,26 @@ body {
     
 }
 
-.styled-table .table-button {
-    background-color: red;
+.styled-table .table-button-delete {
+    background-color: lightcoral;
     border: none;
     color: white;
-    padding: 8px 16px;
+    padding: 4px 8px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 8px;
+    font-size: 12px;
+}
+
+.styled-table .table-button-edit {
+    background-color: lightskyblue;
+    border: none;
+    color: white;
+    padding: 4px 8px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
 }
 
 .styled-button {
