@@ -84,16 +84,15 @@ function addClient(name, surname, email, postal_code, phone, nip)
 
     request.onsuccess = function (event) 
     {
-        loadTable();
-        clearButtons();
-        alert("Dodano wpis do bazy danych.");
+        return(0);
     };
 
     request.onerror = function (event) 
     {
-        alert("Wystapil blad przy dodawaniu klienta do bazy.");
+        return(1);
     }
 }
+
 function interface_addClient() 
 {
     var name = $('#name').val();
@@ -109,8 +108,16 @@ function interface_addClient()
         return;
     }
 
-    addClient(name, surname, email, postal_code, phone, nip);
-
+    if (addClient(name, surname, email, postal_code, phone, nip) == 0)
+    {
+        clearButtons();
+        loadTable();
+        alert("Dodano klienta do bazy danych!");
+    }
+    else
+    {
+        alert("Wystapil blad przy dodawaniu klienta do bazy danych!");
+    }
 }
 
 function deleteClient(clientID) {
