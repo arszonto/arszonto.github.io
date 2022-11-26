@@ -48,12 +48,12 @@ function loadTable() {
             clients = clients.concat(
                 '<tr class="client">' +
                 '<td class="id">' + cursor.key + '</td>' +
-                '<td class="name">' + cursor.value.name + '</td>' +
-                '<td class="surname">' + cursor.value.surname + '</td>' +
-                '<td class="email">' + cursor.value.email + '</td>' +
-                '<td class="postal_code">' + cursor.value.postal_code + '</td>' +
-                '<td class="phone">' + cursor.value.phone + '</td>' +
-                '<td class="nip">' + cursor.value.nip + '</td>' +
+                '<td class="name" ' + 'id=name_' + + cursor.key + ' ' + 'contentEditable="true">' + cursor.value.name + '</td>' +
+                '<td class="surname" ' + 'id=surname_' + + cursor.key + ' ' + 'contentEditable="true">' + cursor.value.surname + '</td>' +
+                '<td class="email" ' + 'id=email_' + + cursor.key + ' ' + 'contentEditable="true">' + cursor.value.email + '</td>' +
+                '<td class="postal_code" ' + 'id=postal_code_' + + cursor.key + ' ' + 'contentEditable="true">' + cursor.value.postal_code + '</td>' +
+                '<td class="phone" ' + 'id=phone_' + + cursor.key + ' ' + 'contentEditable="true">' + cursor.value.phone + '</td>' +
+                '<td class="nip" ' + 'id=nip_' + + cursor.key + ' ' + 'contentEditable="true">' + cursor.value.nip + '</td>' +
                 '<td class="operations">' +
                 '<button class="table-button-delete" id="remove_button" onclick="deleteClient(' + cursor.key +')">Usun</button>' + 
                 '<button class="table-button-edit" id="edit_button" onclick="editClient(' + cursor.key +')">Edytuj</button>' + 
@@ -131,6 +131,36 @@ function deleteClient(clientID) {
         alert("Usunieto wpis z bazy danych.");
     };
 };
+
+function editClient(clientID) {
+    const objectStore = db.transaction(["client"], "readwrite").objectStore("client");
+    const request = objectStore.get(clientID);
+
+    request.onerror = function (event) {
+        loadTable();
+        alert("Wystapil blad przy aktualizacji danych!");
+    }
+
+    request.onsuccess = function (event) {
+        var data = event.target.result;
+        data.name = $('#name_' + clientID).text();
+        data.surname = $('#surname_' + clientID).text();
+        data.email = $('#email_' + clientID).text();
+        data.postal_code = $('#postal_code_' + clientID).text();
+        data.phone = $('#phone_' + clientID).text();
+        data.nip = $('#nip_' + clientID).text();
+
+        const requestUpdate = objectStore.put(data);
+        requestUpdate.onerror = (event) => {
+            loadTable();
+            alert("Wystapil blad przy aktualizacji danych!");
+        };
+        requestUpdate.onsuccess = (event) => {
+            loadTable();
+            alert("Dane klienta zaktualizowane!");
+        };
+    };
+}
 
 function clearButtons() {
     $('#name').val("");
