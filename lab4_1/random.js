@@ -8,9 +8,10 @@ function fill_with_random_data() {
 }
 
 function generate_random_data() {
-    addClient("Bożydar", "Więckowski", "lore@ipsum.com", "22-777", "554-321-111", "215-842-31-21");
-    addClient("Andrzej", "Nieduda", "dlugipis@gov.com", "01-020", "111-222-333", "215-842-31-21");
-    addClient("Czesław", "Michniewicz", "czesio@pzpn.com", "00-711", "711-711-711", "711-711-00-00");
-    loadTable();
+    database.addClient("Immanuel", "Kant", "neokantyzm@filozofuj.tk", "22-777", "554-321-111", "215-842-31-21");
+    database.addClient("Lech", "Niewałęsa", "agent@bolek.ussr", "01-020", "111-222-333", "215-842-31-21");
+    database.addClient("Czesław", "Michniewicz", "czesio@pzpn.com", "00-711", "711-711-711", "711-711-00-00");
+    database.addClient("Cory", "Itrevor", "trailerpark@boys.com", "15-431", "132-322-111", "433-423-13-11");
+    interface.refreshTable();
     alert("Dodano testowe dane do tabeli.");
 }
