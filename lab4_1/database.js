@@ -82,15 +82,14 @@ function addClient(name, surname, email, postal_code, phone, nip)
         });
 
 
-    request.onsuccess = function (event) 
-    {
-        return(0);
-    };
+    var status = 0;
 
     request.onerror = function (event) 
     {
-        return(1);
+        status = 1;
     }
+
+    return status;
 }
 
 function interface_addClient() 
@@ -108,7 +107,8 @@ function interface_addClient()
         return;
     }
 
-    if (addClient(name, surname, email, postal_code, phone, nip) == 0)
+    var result = addClient(name, surname, email, postal_code, phone, nip)
+    if (result == 0)
     {
         clearButtons();
         loadTable();
