@@ -70,19 +70,6 @@ function loadTable() {
 
 function addClient(name, surname, email, postal_code, phone, nip)
 {
-    var name = $('#name').val();
-    var surname = $('#surname').val();
-    var email = $('#email').val();
-    var postal_code = $('#postal_code').val();
-    var phone = $('#phone').val();
-    var nip = $('#nip').val();
-
-    if (!name || !surname || !email || !postal_code || !phone || !nip)
-    {
-        alert("Nalezy wypelnic wszystkie pola!");
-        return;
-    }
-
     var request = db.transaction(["client"], "readwrite")
         .objectStore("client")
         .add({
@@ -106,6 +93,24 @@ function addClient(name, surname, email, postal_code, phone, nip)
     {
         alert("Wystapil blad przy dodawaniu klienta do bazy.");
     }
+}
+function interface_addClient() 
+{
+    var name = $('#name').val();
+    var surname = $('#surname').val();
+    var email = $('#email').val();
+    var postal_code = $('#postal_code').val();
+    var phone = $('#phone').val();
+    var nip = $('#nip').val();
+
+    if (!name || !surname || !email || !postal_code || !phone || !nip)
+    {
+        alert("Nalezy wypelnic wszystkie pola!");
+        return;
+    }
+
+    addClient(name, surname, email, postal_code, phone, nip);
+
 }
 
 function deleteClient(clientID) {
