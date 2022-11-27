@@ -129,8 +129,8 @@ const database = {
                     '<td class="phone" ' + 'id=phone_' + + cursor.key + ' ' + 'contentEditable="true">' + cursor.value.phone + '</td>' +
                     '<td class="nip" ' + 'id=nip_' + + cursor.key + ' ' + 'contentEditable="true">' + cursor.value.nip + '</td>' +
                     '<td class="operations">' +
-                    '<button class="table-button-delete" id="remove_button" onclick="interface.deleteClient(' + cursor.key +')">Usun</button>' + 
-                    '<button class="table-button-edit" id="edit_button" onclick="interface.editClient(' + cursor.key +')">Edytuj</button>' + 
+                    '<button class="table-button color-delete" id="remove_button" onclick="interface.deleteClient(' + cursor.key +')">Usuń</button>' + 
+                    '<button class="table-button color-edit" id="edit_button" onclick="interface.editClient(' + cursor.key +')">Edytuj</button>' + 
                     '</td>' +
                     '</tr>'
                 );

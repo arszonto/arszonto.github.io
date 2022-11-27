@@ -1,51 +1,148 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa&display=swap');
+
+html {
+    scroll-behavior: smooth;
+}
+
 body {
-    overflow: hidden;
+    @import url;
+    overflow: auto;
+    font-family: Comfortaa, Helvetica, sans-serif, Arial;
+    background-color: gainsboro;
+}
+
+label, select {
+    width: 30%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    background-color: lightgray;
+}
+
+input[type=text], select {
+    width: 60%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.entry-box {
+    display: inline-block;
+    width: 45%;
+}
+
+.entry-pair {
+    width: 100%;
+}
+
+.base-container {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    align-items: center;
+    text-align: center;
 }
 
 .styled-table {
     border-collapse: collapse;
-    margin: 25px 0;
-    font-size: 0.9em;
-    font-family: sans-serif;
-    min-width: 400px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-
-    
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    border: none;
+}
+.styled-table td, #styled-table th {
+    border: 1px solid #ddd;
+    padding: 8px;
 }
 
-.styled-table .table-button-delete {
-    background-color: lightcoral;
+.styled-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.styled-table tr:hover {
+    background-color: #ddd;
+}
+
+.styled-table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    background-color: steelblue;
+    color: white;
+}
+
+.table-button {
     border: none;
     color: white;
     padding: 4px 8px;
     text-align: center;
-    text-decoration: none;
     display: inline-block;
     font-size: 12px;
-}
-
-.styled-table .table-button-edit {
-    background-color: lightskyblue;
-    border: none;
-    color: white;
-    padding: 4px 8px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 12px;
+    width: 100%;
+    font-family: Comfortaa, Helvetica, sans-serif, Arial;
 }
 
 .styled-button {
+    width: 30%;
     background-color: #4CAF50;
-    border: none;
     color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
     font-size: 16px;
+    font-family: Comfortaa, Helvetica, sans-serif, Arial;
 }
 
-.entires {
-    overflow: hidden;
+.color-edit {
+    background-color: dodgerblue;
+}
+
+.color-edit:hover {
+    background-color: deepskyblue;
+}
+
+.color-delete {
+    background-color: indianred;
+}
+
+.color-delete:hover {
+    background-color: lightcoral;
+}
+
+.color-add {
+    background-color: seagreen;
+}
+
+.color-add:hover {
+    background-color: mediumseagreen;
+}
+
+.color-fill {
+    background-color: royalblue;
+}
+
+.color-fill:hover {
+    background-color: cornflowerblue;
+}
+
+.color-clear {
+    background-color: darkred;
+}
+
+.color-clear:hover {
+    background-color: firebrick;
+}
+
+h5 {
+    margin: 1px;
 }
