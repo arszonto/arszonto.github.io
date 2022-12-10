@@ -31,9 +31,9 @@ const database = {
             var engine = event.target.result;
             var objectStore = engine.createObjectStore("client", {keyPath: "id", autoIncrement: true});
 
-            for (var i in clientData) 
+            for (clientData in database.clientData) 
             {
-                objectStore.add(clientData[i]);
+                objectStore.add(clientData);
             }
         }
     },
