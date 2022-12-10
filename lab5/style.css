@@ -143,6 +143,14 @@ input[type=text], select {
     background-color: firebrick;
 }
 
+.color-search {
+    background-color: violet;
+}
+
+.color-search:hover {
+    background-color: plum;
+}
+
 h5 {
     margin: 1px;
 }
