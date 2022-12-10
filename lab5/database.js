@@ -147,7 +147,7 @@ const database = {
         }
     },
 
-    filterTableData: (filteredEntries) => {
+    filterTableData: (keyword) => {
         var clients = "";
         const objectStore = database.engine.transaction("client").objectStore("client");
         const request = objectStore.openCursor();
