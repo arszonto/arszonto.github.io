@@ -122,12 +122,12 @@ const database = {
                 clients = clients.concat(
                     '<tr class="client">' +
                     '<td class="id">' + cursor.key + '</td>' +
-                    '<td class="name" ' + 'id=name_' + + cursor.key + ' ' + 'contentEditable="true">' + cursor.value.name + '</td>' +
-                    '<td class="surname" ' + 'id=surname_' + + cursor.key + ' ' + 'contentEditable="true">' + cursor.value.surname + '</td>' +
-                    '<td class="email" ' + 'id=email_' + + cursor.key + ' ' + 'contentEditable="true">' + cursor.value.email + '</td>' +
-                    '<td class="postal_code" ' + 'id=postal_code_' + + cursor.key + ' ' + 'contentEditable="true">' + cursor.value.postal_code + '</td>' +
-                    '<td class="phone" ' + 'id=phone_' + + cursor.key + ' ' + 'contentEditable="true">' + cursor.value.phone + '</td>' +
-                    '<td class="nip" ' + 'id=nip_' + + cursor.key + ' ' + 'contentEditable="true">' + cursor.value.nip + '</td>' +
+                    '<td class="name" ' + 'id=name_' + cursor.key + ' ' + 'contentEditable="true">' + cursor.value.name + '</td>' +
+                    '<td class="surname" ' + 'id=surname_' + cursor.key + ' ' + 'contentEditable="true">' + cursor.value.surname + '</td>' +
+                    '<td class="email" ' + 'id=email_' + cursor.key + ' ' + 'contentEditable="true">' + cursor.value.email + '</td>' +
+                    '<td class="postal_code" ' + 'id=postal_code_' + cursor.key + ' ' + 'contentEditable="true">' + cursor.value.postal_code + '</td>' +
+                    '<td class="phone" ' + 'id=phone_' + cursor.key + ' ' + 'contentEditable="true">' + cursor.value.phone + '</td>' +
+                    '<td class="nip" ' + 'id=nip_' + cursor.key + ' ' + 'contentEditable="true">' + cursor.value.nip + '</td>' +
                     '<td class="operations">' +
                     '<button class="table-button color-delete" id="remove_button" onclick="interface.deleteClient(' + cursor.key +')">Usuń</button>' + 
                     '<button class="table-button color-edit" id="edit_button" onclick="interface.editClient(' + cursor.key +')">Edytuj</button>' + 
@@ -169,12 +169,12 @@ const database = {
                     clients = clients.concat(
                         '<tr class="client">' +
                         '<td class="id">' + cursor.key + '</td>' +
-                        '<td class="name" ' + 'id=name_' + + cursor.key + ' ' + 'contentEditable="true">' + cursor.value.name + '</td>' +
-                        '<td class="surname" ' + 'id=surname_' + + cursor.key + ' ' + 'contentEditable="true">' + cursor.value.surname + '</td>' +
-                        '<td class="email" ' + 'id=email_' + + cursor.key + ' ' + 'contentEditable="true">' + cursor.value.email + '</td>' +
-                        '<td class="postal_code" ' + 'id=postal_code_' + + cursor.key + ' ' + 'contentEditable="true">' + cursor.value.postal_code + '</td>' +
-                        '<td class="phone" ' + 'id=phone_' + + cursor.key + ' ' + 'contentEditable="true">' + cursor.value.phone + '</td>' +
-                        '<td class="nip" ' + 'id=nip_' + + cursor.key + ' ' + 'contentEditable="true">' + cursor.value.nip + '</td>' +
+                        '<td class="name" ' + 'id=name_' + cursor.key + ' ' + 'contentEditable="true">' + cursor.value.name + '</td>' +
+                        '<td class="surname" ' + 'id=surname_' + cursor.key + ' ' + 'contentEditable="true">' + cursor.value.surname + '</td>' +
+                        '<td class="email" ' + 'id=email_' + cursor.key + ' ' + 'contentEditable="true">' + cursor.value.email + '</td>' +
+                        '<td class="postal_code" ' + 'id=postal_code_' + cursor.key + ' ' + 'contentEditable="true">' + cursor.value.postal_code + '</td>' +
+                        '<td class="phone" ' + 'id=phone_' + cursor.key + ' ' + 'contentEditable="true">' + cursor.value.phone + '</td>' +
+                        '<td class="nip" ' + 'id=nip_' + cursor.key + ' ' + 'contentEditable="true">' + cursor.value.nip + '</td>' +
                         '<td class="operations">' +
                         '<button class="table-button color-delete" id="remove_button" onclick="interface.deleteClient(' + cursor.key +')">Usuń</button>' + 
                         '<button class="table-button color-edit" id="edit_button" onclick="interface.editClient(' + cursor.key +')">Edytuj</button>' + 
