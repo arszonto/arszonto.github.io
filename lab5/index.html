@@ -58,9 +58,8 @@
         </div>
         
         <div class="entry-pair"> 
-                <label class="label-short" for="search-keyword">Fraza</label> 
-                <input class="input-short" id="search-keyword" type="text" placeholder="example@gmail.com" required>
-                <button class="styled-button-short color-fill" onclick="interface.filterTable()">Wyszukaj</button>
+                <label class="label-short" for="search-keyword">Filtrowanie wyników</label> 
+                <input class="input-short" id="search-keyword" type="text" placeholder="Dowolny tekst" oninput="interface.filterTable()" required>
         </div>
 
         <h5> Pola tabeli są edytowalne. Po zakończeniu edycji wciśnij przycisk "Edytuj" w komórce operacji aby zaktualizować wpis w bazie danych.</h2>

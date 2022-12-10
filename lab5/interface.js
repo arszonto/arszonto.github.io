@@ -89,13 +89,13 @@ const interface = {
 
     refreshTable: () => {
         $('.client').remove();
-        const result = database.updateTableData();
+        const result = database.toHTMLTable();
     },
 
     filterTable: () => {
         var keyword = $('#search-keyword').val();
         $('.client').remove();
-        const result = database.filterTableData(keyword);
+        const result = database.toHTMLTable(keyword);
     }
 }
 

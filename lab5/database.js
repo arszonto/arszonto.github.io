@@ -22,7 +22,7 @@ const database = {
         request.onsuccess = function (event) 
         {
             database.engine = request.result;
-            database.updateTableData();
+            database.toHTMLTable();
             console.log("Database succesfuly loaded.");
         };
 
@@ -109,7 +109,23 @@ const database = {
         return status;
     },
 
-    updateTableData: () => {
+    entryToHTMLTableRow: (cursor) => {
+        return  '<tr class="client">' +
+                '<td class="id">' + cursor.key + '</td>' +
+                '<td class="name" ' + 'id=name_' + cursor.key + ' ' + 'contentEditable="true">' + cursor.value.name + '</td>' +
+                '<td class="surname" ' + 'id=surname_' + cursor.key + ' ' + 'contentEditable="true">' + cursor.value.surname + '</td>' +
+                '<td class="email" ' + 'id=email_' + cursor.key + ' ' + 'contentEditable="true">' + cursor.value.email + '</td>' +
+                '<td class="postal_code" ' + 'id=postal_code_' + cursor.key + ' ' + 'contentEditable="true">' + cursor.value.postal_code + '</td>' +
+                '<td class="phone" ' + 'id=phone_' + cursor.key + ' ' + 'contentEditable="true">' + cursor.value.phone + '</td>' +
+                '<td class="nip" ' + 'id=nip_' + cursor.key + ' ' + 'contentEditable="true">' + cursor.value.nip + '</td>' +
+                '<td class="operations">' +
+                '<button class="table-button color-delete" id="remove_button" onclick="interface.deleteClient(' + cursor.key +')">Usuń</button>' + 
+                '<button class="table-button color-edit" id="edit_button" onclick="interface.editClient(' + cursor.key +')">Edytuj</button>' + 
+                '</td>' +
+                '</tr>';
+    },
+
+    toHTMLTable: (filter_keyword = "") => {
         var clients = "";
         const objectStore = database.engine.transaction("client").objectStore("client");
         const request = objectStore.openCursor();
@@ -119,21 +135,24 @@ const database = {
             var cursor = event.target.result;
             if (cursor) 
             {
-                clients = clients.concat(
-                    '<tr class="client">' +
-                    '<td class="id">' + cursor.key + '</td>' +
-                    '<td class="name" ' + 'id=name_' + cursor.key + ' ' + 'contentEditable="true">' + cursor.value.name + '</td>' +
-                    '<td class="surname" ' + 'id=surname_' + cursor.key + ' ' + 'contentEditable="true">' + cursor.value.surname + '</td>' +
-                    '<td class="email" ' + 'id=email_' + cursor.key + ' ' + 'contentEditable="true">' + cursor.value.email + '</td>' +
-                    '<td class="postal_code" ' + 'id=postal_code_' + cursor.key + ' ' + 'contentEditable="true">' + cursor.value.postal_code + '</td>' +
-                    '<td class="phone" ' + 'id=phone_' + cursor.key + ' ' + 'contentEditable="true">' + cursor.value.phone + '</td>' +
-                    '<td class="nip" ' + 'id=nip_' + cursor.key + ' ' + 'contentEditable="true">' + cursor.value.nip + '</td>' +
-                    '<td class="operations">' +
-                    '<button class="table-button color-delete" id="remove_button" onclick="interface.deleteClient(' + cursor.key +')">Usuń</button>' + 
-                    '<button class="table-button color-edit" id="edit_button" onclick="interface.editClient(' + cursor.key +')">Edytuj</button>' + 
-                    '</td>' +
-                    '</tr>'
-                );
+                if(filter_keyword != "")
+                {
+                    const matching_entries = [
+                        cursor.value.name.indexOf(filter_keyword),
+                        cursor.value.surname.indexOf(filter_keyword),
+                        cursor.value.email.indexOf(filter_keyword),
+                        cursor.value.postal_code.indexOf(filter_keyword),
+                        cursor.value.phone.indexOf(filter_keyword),
+                        cursor.value.nip.indexOf(filter_keyword)
+                    ].some((element) => element !== -1);
+                    if (matching_entries) {
+                        clients = clients.concat(database.entryToHTMLTableRow(cursor));
+                    }
+                }
+                else
+                {
+                    clients = clients.concat(database.entryToHTMLTableRow(cursor));
+                }
                 cursor.continue();
             }
             else
@@ -145,50 +164,5 @@ const database = {
         {
             status = 1;
         }
-    },
-
-    filterTableData: (keyword) => {
-        var clients = "";
-        const objectStore = database.engine.transaction("client").objectStore("client");
-        const request = objectStore.openCursor();
-        request.onsuccess = function(event) {
-            var cursor = event.target.result;
-            if (cursor) 
-            {
-                const results = [
-                    cursor.value.name.indexOf(keyword),
-                    cursor.value.surname.indexOf(keyword),
-                    cursor.value.email.indexOf(keyword),
-                    cursor.value.postal_code.indexOf(keyword),
-                    cursor.value.phone.indexOf(keyword),
-                    cursor.value.nip.indexOf(keyword)
-                ];
-                const checkSearchResults = (element) => element !== -1;
-                if (results.some(checkSearchResults)) {                
-                    console.log("Found matching entry:" + JSON.stringify(cursor.value));
-                    clients = clients.concat(
-                        '<tr class="client">' +
-                        '<td class="id">' + cursor.key + '</td>' +
-                        '<td class="name" ' + 'id=name_' + cursor.key + ' ' + 'contentEditable="true">' + cursor.value.name + '</td>' +
-                        '<td class="surname" ' + 'id=surname_' + cursor.key + ' ' + 'contentEditable="true">' + cursor.value.surname + '</td>' +
-                        '<td class="email" ' + 'id=email_' + cursor.key + ' ' + 'contentEditable="true">' + cursor.value.email + '</td>' +
-                        '<td class="postal_code" ' + 'id=postal_code_' + cursor.key + ' ' + 'contentEditable="true">' + cursor.value.postal_code + '</td>' +
-                        '<td class="phone" ' + 'id=phone_' + cursor.key + ' ' + 'contentEditable="true">' + cursor.value.phone + '</td>' +
-                        '<td class="nip" ' + 'id=nip_' + cursor.key + ' ' + 'contentEditable="true">' + cursor.value.nip + '</td>' +
-                        '<td class="operations">' +
-                        '<button class="table-button color-delete" id="remove_button" onclick="interface.deleteClient(' + cursor.key +')">Usuń</button>' + 
-                        '<button class="table-button color-edit" id="edit_button" onclick="interface.editClient(' + cursor.key +')">Edytuj</button>' + 
-                        '</td>' +
-                        '</tr>'
-                    );
-                }
-                cursor.continue();
-            }
-            else
-            {
-                $('thead').after(clients);
-            }
-        };
-
     }
 }
