@@ -22,6 +22,17 @@ label, select {
     background-color: lightgray;
 }
 
+.label-short {
+    width: 15%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    background-color: lightgray;
+}
+
 input[type=text], select {
     width: 60%;
     padding: 12px 20px;
@@ -30,6 +41,14 @@ input[type=text], select {
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
+}
+
+.input-long[type=text], select {
+    width: 60%;
+}
+
+.input-short[type=text], select {
+    width: 30%;
 }
 
 .entry-box {
@@ -92,7 +111,18 @@ input[type=text], select {
 
 .styled-button {
     width: 30%;
-    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    font-family: Comfortaa, Helvetica, sans-serif, Arial;
+}
+
+.styled-button-short {
+    width: 25%;
     color: white;
     padding: 14px 20px;
     margin: 8px 0;
