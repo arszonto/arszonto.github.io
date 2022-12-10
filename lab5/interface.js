@@ -90,6 +90,12 @@ const interface = {
     refreshTable: () => {
         $('.client').remove();
         const result = database.updateTableData();
+    },
+
+    filterTable: (text) => {
+        const filteredTable = database.searchForEntries(text);
+        $('.client').remove();
+        const result = database.filterTableData(filteredTable);
     }
 }
 
