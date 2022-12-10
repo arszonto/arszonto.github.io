@@ -145,5 +145,28 @@ const database = {
         {
             status = 1;
         }
+    },
+
+    searchForEntries: (keyword) => {
+        const objectStore = database.engine.transaction("client").objectStore("client");
+        const request = objectStore.openCursor();
+        request.onsuccess = function(event) {
+            var cursor = event.target.result;
+            const results = [
+                cursor.value.name.indexOf(keyword),
+                cursor.value.surname.indexOf(keyword),
+                cursor.value.email.indexOf(keyword),
+                cursor.value.postal_code.indexOf(keyword),
+                cursor.value.phone.indexOf(keyword),
+                cursor.value.nip.indexOf(keyword)
+            ];
+            const checkSearchResults = (element) => element !== -1;
+            if (cursor) {
+                if (results.some(checkSearchResults)) {                
+                    console.log("Znaleziony pasujący wpis:" + JSON.stringify(cursor.value));
+                }
+                cursor.continue();          
+            }
+        };
     }
 }
