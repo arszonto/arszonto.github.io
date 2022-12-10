@@ -92,8 +92,9 @@ const interface = {
         const result = database.updateTableData();
     },
 
-    filterTable: (text) => {
-        const filteredTable = database.searchForEntries(text);
+    filterTable: () => {
+        var keyword = $('#search-keyword').val();
+        const filteredTable = database.searchForEntries(keyword);
         $('.client').remove();
         const result = database.filterTableData(filteredTable);
     }

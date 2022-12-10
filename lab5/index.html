@@ -56,6 +56,12 @@
             <button class="styled-button color-clear" id="clear_data_btn" type="button" onClick="interface.clearClients()">Wyczyść bazę danych klientów</button>
             <button class="styled-button color-fill" id="random_data_btn" type="button" onClick="generate_random_data()">Wygeneruj przykładowe dane w tabeli</button>
         </div>
+        
+        <div class="search-box"> 
+                <label for="search-keyword">Fraza</label> 
+                <input id="search-keyword" type="text" placeholder="example@gmail.com" required>
+                <button class="styled-button color-search" onclick="interface.filterTable()">Wyszukaj</button>
+        </div>
 
         <h5> Pola tabeli są edytowalne. Po zakończeniu edycji wciśnij przycisk "Edytuj" w komórce operacji aby zaktualizować wpis w bazie danych.</h2>
         <table class="styled-table " id="data_table" border=2>
