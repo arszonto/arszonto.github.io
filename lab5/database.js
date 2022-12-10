@@ -151,6 +151,7 @@ const database = {
         var clients = "";
         for (const entry of filteredEntries)
         {
+            console.log("Found matching entry:" + JSON.stringify(entry));
             clients = clients.concat(
                 '<tr class="client">' +
                 '<td class="id">' + entry["key"] + '</td>' +
