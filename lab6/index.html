@@ -56,22 +56,17 @@
             <button class="styled-button color-clear" id="clear_data_btn" type="button" onClick="interface.clearClients()">Wyczyść bazę danych klientów</button>
             <button class="styled-button color-fill" id="random_data_btn" type="button" onClick="generate_random_data()">Wygeneruj przykładowe dane w tabeli</button>
         </div>
-        
-        <div class="entry-pair"> 
-                <label class="label-short" for="search-keyword">Filtrowanie wyników</label> 
-                <input class="input-short" id="search-keyword" type="text" placeholder="Dowolny tekst" oninput="interface.filterTable()" required>
-        </div>
 
         <h5> Pola tabeli są edytowalne. Po zakończeniu edycji wciśnij przycisk "Edytuj" w komórce operacji aby zaktualizować wpis w bazie danych.</h2>
         <table class="styled-table " id="data_table" border=2>
             <thead>
-                <th style="width:2em">ID</th>
-                <th style="width:6em">Imie</th>
-                <th style="width:6em">Nazwisko</th>
-                <th style="width:14em">Email</th>
-                <th style="width:10em">Kod pocztowy</th>
-                <th style="width:12em">Telefon</th>
-                <th style="width:12em">NIP</th>
+                <th style="width:2em">ID<br><input class="input-filter" id="search-keyword" type="text" placeholder="Filtruj" oninput="interface.filterTable()" required></th>
+                <th style="width:6em">Imie<br><input class="input-filter" id="search-keyword" type="text" placeholder="Filtruj" oninput="interface.filterTable()" required></th>
+                <th style="width:6em">Nazwisko<br><input class="input-filter" id="search-keyword" type="text" placeholder="Filtruj" oninput="interface.filterTable()" required></th>
+                <th style="width:14em">Email<br><input class="input-filter" id="search-keyword" type="text" placeholder="Filtruj" oninput="interface.filterTable()" required></th>
+                <th style="width:10em">Kod pocztowy<br><input class="input-filter" id="search-keyword" type="text" placeholder="Filtruj" oninput="interface.filterTable()" required></th>
+                <th style="width:12em">Telefon<br><input class="input-filter" id="search-keyword" type="text" placeholder="Filtruj" oninput="interface.filterTable()" required></th>
+                <th style="width:12em">NIP<br><input class="input-filter" id="search-keyword" type="text" placeholder="Filtruj" oninput="interface.filterTable()" required></th>
                 <th>Operacje</th>
             </thead>
         </table>
