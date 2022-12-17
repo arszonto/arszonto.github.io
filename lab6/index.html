@@ -1,0 +1,80 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="database.js"></script>
+    <script src="interface.js"></script>
+    <script src="random.js"></script>
+    <script src="initialization.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="base-container">
+        <h3>Zarządzanie klientami</h3>
+    </div>
+    <div class="base-container">
+        <div class="entry-pair">
+            <div class="entry-box">
+                <label for="name">Imię</label> 
+                <input id="name" type="text" placeholder="Frank" pattern="[a-zA-Z]{2,64}" required>
+            </div>
+            <div class="entry-box">
+                <label for="surname">Nazwisko</label> 
+                <input id="surname" type="text" placeholder="Underwood" pattern="[a-zA-Z]{2,64}" required>
+            </div>
+        </div>
+        <div class="entry-pair">
+            <div class="entry-box">  
+                <label for="email">Email</label> 
+                <input id="email" type="text" placeholder="example@gmail.com" pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$" required>
+            </div>
+            <div class="entry-box">
+                <label for="phone">Telefon</label> 
+                <input id="phone" type="text" name="phone" placeholder="601-230-100" pattern="[0-9]{3}-[0-9]{3}-[0-9]{3}" required>
+            </div>
+        </div>
+        <div class="entry-pair">
+            <div class="entry-box">
+                <label for="postal_code">Kod pocztowy</label> 
+                <input id="postal_code" type="text" placeholder="22-640" pattern="[0-9]{2}-[0-9]{3}" required>
+            </div>
+            <div class="entry-box">
+                <label for="nip">NIP</label>
+                <input id="nip" type="text" name="nip" placeholder="000-000-00-00" pattern="[0-9]{3}-[0-9]{3}-[0-9]{2}-[0-9]{2}" required>
+            </div>
+        </div>
+        <div class="entry-pair">
+            <button class="styled-button color-add" onclick="interface.addClient()">Dodaj</button>
+            <button class="styled-button color-fill" id="random_entry_btn" type="button" onClick="fill_with_random_data()">Wypełnij przykładowymi danymi</button>
+        </div>
+    </div>
+
+    <br>
+
+    <div class="base-container">
+        <div class="entry-pair">
+            <button class="styled-button color-clear" id="clear_data_btn" type="button" onClick="interface.clearClients()">Wyczyść bazę danych klientów</button>
+            <button class="styled-button color-fill" id="random_data_btn" type="button" onClick="generate_random_data()">Wygeneruj przykładowe dane w tabeli</button>
+        </div>
+        
+        <div class="entry-pair"> 
+                <label class="label-short" for="search-keyword">Filtrowanie wyników</label> 
+                <input class="input-short" id="search-keyword" type="text" placeholder="Dowolny tekst" oninput="interface.filterTable()" required>
+        </div>
+
+        <h5> Pola tabeli są edytowalne. Po zakończeniu edycji wciśnij przycisk "Edytuj" w komórce operacji aby zaktualizować wpis w bazie danych.</h2>
+        <table class="styled-table " id="data_table" border=2>
+            <thead>
+                <th style="width:2em">ID</th>
+                <th style="width:6em">Imie</th>
+                <th style="width:6em">Nazwisko</th>
+                <th style="width:14em">Email</th>
+                <th style="width:10em">Kod pocztowy</th>
+                <th style="width:12em">Telefon</th>
+                <th style="width:12em">NIP</th>
+                <th>Operacje</th>
+            </thead>
+        </table>
+    </div>
+</body>
+</html>
