@@ -120,7 +120,7 @@ const database = {
                 '<td class="nip" ' + 'id=nip_' + cursor.key + ' ' + 'contentEditable="true">' + cursor.value.nip + '</td>' +
                 '<td class="operations">' +
                 '<button class="table-button color-delete" id="remove_button" onclick="interface.deleteClient(' + cursor.key +')">Usuń</button>' + 
-                '<button class="table-button color-edit" id="edit_button" onclick="interface.editClient(' + cursor.key +')">Edytuj</button>' + 
+                '<button class="table-button color-edit" id="edit_button" onclick="interface.editClient(' + cursor.key +')">Aktualizuj</button>' + 
                 '</td>' +
                 '</tr>';
     },
