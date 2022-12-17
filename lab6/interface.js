@@ -19,7 +19,6 @@ const interface = {
         {
             interface.clearInputForm();
             interface.refreshTable();
-            alert("Dodano klienta do bazy danych!");
         }
         else
         {
@@ -37,11 +36,7 @@ const interface = {
         data.nip = $('#nip_' + clientID).text();
 
         const result = database.editClient(clientID, data);
-        if(result == 0)
-        {
-            alert("Dane klienta zaktualizowane!");
-        }
-        else 
+        if(result != 0)
         {
             alert("Wystąpił błąd przy aktualizacji danych klienta!");
         };
@@ -54,7 +49,6 @@ const interface = {
         if(result == 0)
         {
             interface.refreshTable();
-            alert("Klient usunięty z bazy danych!");
         }
         else 
         {
@@ -93,9 +87,17 @@ const interface = {
     },
 
     filterTable: () => {
-        var keyword = $('#search-keyword').val();
+        let filter = new Map([
+            ['id', $('#search-keyword-id').val()],
+            ['name', $('#search-keyword-name').val()],
+            ['surname', $('#search-keyword-surname').val()],
+            ['email', $('#search-keyword-email').val()],
+            ['postal_code', $('#search-keyword-postal_code').val()],
+            ['phone', $('#search-keyword-phone').val()],
+            ['nip', $('#search-keyword-nip').val()]
+          ]);
         $('.client').remove();
-        const result = database.toHTMLTable(keyword);
+        const result = database.toHTMLTable(filter);
     }
 }
 

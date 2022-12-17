@@ -125,27 +125,62 @@ const database = {
                 '</tr>';
     },
 
-    toHTMLTable: (filter_keyword = "") => {
+    toHTMLTable: (filter = null) => {
         var clients = "";
+
         const objectStore = database.engine.transaction("client").objectStore("client");
         const request = objectStore.openCursor();
-        var status = 0;
+
         request.onsuccess = function (event) 
         {
+            
             var cursor = event.target.result;
             if (cursor) 
             {
-                if(filter_keyword != "")
+                if(filter != null)
                 {
-                    const matching_entries = [
-                        cursor.value.name.indexOf(filter_keyword),
-                        cursor.value.surname.indexOf(filter_keyword),
-                        cursor.value.email.indexOf(filter_keyword),
-                        cursor.value.postal_code.indexOf(filter_keyword),
-                        cursor.value.phone.indexOf(filter_keyword),
-                        cursor.value.nip.indexOf(filter_keyword)
-                    ].some((element) => element !== -1);
-                    if (matching_entries) {
+                    var conditions = 7;
+                    for(const [tag, keyword] of filter)
+                    {
+                        if(keyword == "")
+                        {
+                            conditions -= 1;
+                            continue;
+                        }
+
+                        var matching_entries = -1;
+                        switch(tag)
+                        {
+                            case "id":
+                                matching_entries = cursor.value.id.indexOf(keyword);
+                                break;
+                            case "name":
+                                matching_entries = cursor.value.name.indexOf(keyword);
+                                break;
+                            case "surname":
+                                matching_entries = cursor.value.surname.indexOf(keyword);
+                                break;
+                            case "email":
+                                matching_entries = cursor.value.email.indexOf(keyword);
+                                break;
+                            case "postal_code":
+                                matching_entries = cursor.value.postal_code.indexOf(keyword);
+                                break;
+                            case "phone":
+                                matching_entries = cursor.value.phone.indexOf(keyword);
+                                break;
+                            case "nip":
+                                matching_entries = cursor.value.nip.indexOf(keyword);
+                                break;
+                        }
+                        if(matching_entries != -1)
+                        {
+                            conditions -= 1;
+                            continue;
+                        }
+                    }
+                    if(conditions == 0)
+                    {
                         clients = clients.concat(database.entryToHTMLTableRow(cursor));
                     }
                 }
