@@ -1,20 +1,24 @@
 const interface = {
     addClient: () =>
     {
-        var name = $('#name').val();
-        var surname = $('#surname').val();
-        var email = $('#email').val();
-        var postal_code = $('#postal_code').val();
-        var phone = $('#phone').val();
-        var nip = $('#nip').val();
-
-        if (!name || !surname || !email || !postal_code || !phone || !nip)
+        var parameters = [];
+        for (elem of ['name', 'surname', 'email', 'postal_code', 'phone', 'nip'])
         {
-            alert("Należy wypełnić wszystkie pola!");
-            return;
+            var field = document.getElementById(elem)
+            if(!field.checkValidity())
+            {
+                alert("Wprowadzano niepoprawne dane! (" + elem + ")");
+                return;
+            }
+            var value = $("#"+elem).val();
+            if(!value)
+            {
+                alert("Należy wypełnić wszystkie pola!");
+                return;
+            }
+            parameters.push(value);
         }
-
-        var result = database.addClient(name, surname, email, postal_code, phone, nip)
+        var result = database.addClient(...parameters)
         if (result == 0)
         {
             interface.clearInputForm();

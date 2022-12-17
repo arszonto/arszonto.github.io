@@ -55,6 +55,15 @@ input[type=text], select {
     width: 100%;
 }
 
+input:valid {
+    background-color: palegreen;
+}
+
+input:invalid {
+    background-color: lightpink;
+}
+
+
 .entry-box {
     display: inline-block;
     width: 45%;
